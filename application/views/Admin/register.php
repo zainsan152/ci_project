@@ -7,7 +7,7 @@
 			</div>
 		</div>
 	</div>
-	<?php echo form_open('admin/sendemail'); ?>
+	<?php echo form_open('register/sendemail'); ?>
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group">

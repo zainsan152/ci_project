@@ -1,7 +1,6 @@
 <?php include('header.php'); ?>
 <div class="container" style="margin-top: 20px">
-
-	<?php if($error = $this->session->flashdata('Login_failed')) :?>
+	<?php if($error = $this->session->flashdata('insert_failed')) :?>
 			<div class="row">
 				<div class="col-lg-6">
 					<div class ="alert alert-danger">
@@ -10,15 +9,18 @@
 				</div>
 			</div>
 		<?php endif; ?>
-	<?php echo form_open('login'); ?>
+	<h1>Add Articles</h1>
+	<?php echo form_hidden('user_id' , $this->session->userdata('id')); ?>
+	
+	<?php echo form_open('admin/userValidation'); ?>
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group">
-				<label for="username">User Name:</label>
-				<?php echo form_input(['class' => 'form-control', 'placeholder' => 'Enter Username', 'name' => 'uname' ,
-				'value' => set_value('uname') ]); ?>
+				<label for="Title">Article Title:</label>
+				<?php echo form_input(['class' => 'form-control', 'placeholder' => 'Enter Title', 'name' => 'article_title' ,
+				'value' => set_value('article_title') ]); ?>
 				<div class="col-lg-6">
-					<?php echo form_error('uname'  ); ?>
+					<?php echo form_error('article_title' ); ?>
 				</div>
 			</div>
 		</div>
@@ -26,11 +28,11 @@
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group">
-				<label for="email">Password:</label>
-				<?php echo form_password(['class' => 'form-control', 'placeholder' => 'Enter Password', 'id' => 'pwd', 'name' => 'pass',
-				'value' => set_value('pass')]); ?>
+				<label for="body">Article Body:</label>
+				<?php echo form_textarea(['class' => 'form-control', 'placeholder' => 'Enter Body', 'id' => 'body', 'name' => 'article_body',
+				'value' => set_value('article_body')]); ?>
 				<div class="col-lg-6">
-					<?php echo form_error('pass'); ?>
+					<?php echo form_error('article_body'); ?>
 				</div>
 			</div>
 		</div>

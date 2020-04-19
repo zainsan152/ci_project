@@ -29,6 +29,12 @@ class loginmodel extends CI_Model
 				->get();
 		return $q->result();
 	}
+
+	public function add_articles($array)
+	{
+		
+		/*$affected_rows*/ return $this->db->insert('articles' , $array);
+	}
 	
 }
 ?>
