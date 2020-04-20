@@ -1,15 +1,23 @@
 <?php include('header.php'); ?>
 <div class="container" style="margin-top: 20px">
-
-	<?php if($error = $this->session->flashdata('Login_failed')) :?>
-			<div class="row">
-				<div class="col-lg-6">
-					<div class ="alert alert-danger">
-						<?php echo $error; ?>
-					</div>
-				</div>
+	<?php if($error = $this->session->flashdata('user_success')) :?>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class ="alert alert-success">
+				<?php echo $error; ?>
 			</div>
-		<?php endif; ?>
+		</div>
+	</div>
+	<?php endif; ?>
+	<?php if($error = $this->session->flashdata('Login_failed')) :?>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class ="alert alert-danger">
+				<?php echo $error; ?>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
 	<?php echo form_open('login'); ?>
 	<div class="row">
 		<div class="col-lg-6">

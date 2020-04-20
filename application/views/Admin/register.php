@@ -1,6 +1,18 @@
 <?php include('header.php'); ?>
 <div class="container" style="margin-top:20px;">
 	<h1>Register Form</h1>
+	
+	
+	
+	<?php if($error = $this->session->flashdata('user_error')) :?>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class ="alert alert-danger">
+				<?php echo $error; ?>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="alert ">
@@ -46,7 +58,7 @@
 		<div class="col-lg-6">
 			<div class="form-group">
 				<label for="last name">Last Name:</label>
-				<?php echo form_input(['class'=>'form-control','placeholder'=>'Enter Last Name','name'=>'  lastname','value'=>set_value('lastname')]);  ?>
+				<?php echo form_input(['class'=>'form-control','placeholder'=>'Enter Last Name','name'=>'lastname','value'=>set_value('lastname')]);  ?>
 			</div>
 		</div>
 		<div class="col-lg-6" style="margin-top:40px;">
@@ -56,7 +68,7 @@
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group">
-				<label for="Username">Email:</label>
+				<label for="Email">Email:</label>
 				<?php echo form_input(['class'=>'form-control','placeholder'=>'Enter Email','name'=>'email','value'=>set_value('email')]);  ?>
 			</div>
 		</div>

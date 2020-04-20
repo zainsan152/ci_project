@@ -1,8 +1,7 @@
-<?php 
-
+<?php
 /**
- * 
- */
+*
+*/
 class register extends My_Controller
 {
 	
@@ -10,7 +9,6 @@ class register extends My_Controller
 	{
 		$this->load->view('admin/register');
 	}
-
 	public function sendemail()
 {
 $this->form_validation->set_rules('username','User Name','required|alpha');
@@ -21,7 +19,19 @@ $this->form_validation->set_rules('email','Email','required|valid_email|is_uniqu
 $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
 if($this->form_validation->run())
 {
-$this->load->library('email');
+	$post = $this->input->post();
+	$this->load->model('loginmodel');
+	if($this->loginmodel->add_user($post))
+	{
+		$this->session->set_flashdata('user_success' , 'Suucessfully Registered');
+		return redirect('login');
+	}
+	else
+	{
+		$this->session->set_flashdata('user_error' , 'Suucessfully Registered');
+		return redirect('register');
+	}
+/*$this->load->library('email');
 $this->email->from(set_value('email'),set_value('fname'));
 $this->email->to("zain.san.su.152@gmail.com");
 $this->email->subject("Registratiion Greeting..");
@@ -33,6 +43,9 @@ show_error($this->email->print_debugger()); }
 else {
 echo "Your e-mail has been sent!";
 }
+}*/
+
+
 }
 else
 {
@@ -40,6 +53,4 @@ $this->load->view('Admin/register');
 }
 }
 }
-
-
- ?>
+?>
