@@ -34,21 +34,37 @@
 </div>
 <div class="container" style="margin-top: 50px;">
 	<div class="table">
-		<?php echo $this->pagination->create_links();?>
+		<!-- <?php echo $this->db->last_query(); ?> -->
+		
+		
 		<table>
 			<thead>
 				<tr>
-					<th>Article List</th>
+					<th>Sr no.</th>
+					<th>Article Title</th>
+					<th>Article Description</th>
 					<th>Edit</th>
 					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php if(is_array($articles) && count($articles)) : ?>
-				<?php foreach ($articles as $art) : ?>
+				<?php if(is_array($articles) && count($articles)) : 
+				$count = $this->uri->segment(3);?>
+				<?php foreach ($articles as $art) : 
+					
+					?>
 				<tr>
+					<td><?= ++$count; ?></td>
 					<td><?php echo $art->article_title ?></td>
-					<td><a href="" class = "btn btn-primary">Edit</a></td>
+					<td><?php echo $art->article_body ?></td>
+					<td>
+						<?=
+						form_open('admin/edituser/'.$art->id),
+						form_hidden('id' , $art->id),
+						form_submit(['name'=>'submit' , 'value'=>'Edit','class'=>'btn btn-primary']),
+						form_close();
+						?>		
+					</td>
 					<td>
 						<?=
 						form_open('admin/delarticle'),
@@ -68,6 +84,16 @@
 				
 			</tbody>
 		</table>
+		<!-- <ul class="pagination">
+			<li class="page-item"><a class="page-link" href=""><</a></li>
+			<li class="page-item"><a class="page-link" href="">1</a></li>
+			<li class="page-item"><a class="page-link" href="">2</a></li>
+			<li class="page-item"><a class="page-link" href="">3</a></li>
+			<li class="page-item"><a class="page-link" href="" class="active">4</a></li>
+			<li class="page-item"><a class="page-link" href="">5</a></li>
+			<li class="page-item"><a class="page-link" href="">></a></li>
+		</ul> -->
+		<?php echo $this->pagination->create_links();?>
 	</div>
 </div>
 <?php include('footer.php'); ?>

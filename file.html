@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+ <div class="target">Hello world</div>
+ <button id="button">click</button>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script>
+
+
+  $.fn.makeRed = function()
+  {
+    $('#button').click(function()
+    {
+      $('.target').css('color' , 'red');
+    })
+  }
+
+   $(document).ready(function()
+   {
+    $('.target').makeRed();
+
+
+   });
+ </script>
+  
+</body>
+</html>
