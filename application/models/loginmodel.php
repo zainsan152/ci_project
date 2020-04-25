@@ -4,6 +4,30 @@
 */
 class loginmodel extends CI_Model
 {
+
+	public function all_articles_count()
+  {
+
+   $q=$this->db->select()
+            ->from('articles')
+          
+            ->get();
+           return $q->num_rows();
+
+  }
+
+  public function all_articleList($limit,$offset)
+  {
+
+   $query=$this->db->select()
+            ->from('articles')
+             ->limit($limit,$offset)
+            ->get();
+           
+           
+           return  $query->result();
+  }
+  
 	
 	public function isvalidate($username , $password)
 	{

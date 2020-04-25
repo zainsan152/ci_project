@@ -37,7 +37,7 @@
 		<!-- <?php echo $this->db->last_query(); ?> -->
 		
 		
-		<table>
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Sr no.</th>

@@ -14,6 +14,7 @@
 	
 	<?php echo form_open_multipart('admin/userValidation'); ?>
 	<?php echo form_hidden('user_id' , $this->session->userdata('id')); ?>
+	<?php echo form_hidden('created_at' , date('Y-m-d H:i:s')); ?>
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group">
